@@ -19,29 +19,6 @@ h1, h2 {
   }
 }
 
-.top-hero-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-image: image-url('pic-2.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
-}
-
-.top-hero-container {
-  padding-top: 220px;
-  h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    margin-bottom: 60px;
-  }
-}
-
 .form-control {
   height: 45px;
 }
@@ -63,4 +40,11 @@ h1, h2 {
       margin-bottom: 20px;
     }
   }
+}
+
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
 }
