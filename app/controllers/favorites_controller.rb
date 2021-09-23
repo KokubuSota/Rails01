@@ -17,8 +17,9 @@ class FavoritesController < ApplicationController
   
   def destroy
     p "いいね削除しました"
-    topic = Topic.find(params[:topic_id])
+   user = current_user
+   favorite = Favorite.find_by(user_id: user.id, topic_id: params[:topic_id])
+   favorite.delete
   end
-  
   
 end
