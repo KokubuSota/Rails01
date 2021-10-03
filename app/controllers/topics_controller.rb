@@ -1,14 +1,15 @@
 class TopicsController < ApplicationController
   
   def index
-    @topics = Topic.all.includes(:favorite_users)
+    @topics = Topic.all
   end
   
+
   def new
     @topic = Topic.new
   end
   
-   def create
+  def create
     @topic = current_user.topics.new(topic_params)
 
     if @topic.save
@@ -17,7 +18,12 @@ class TopicsController < ApplicationController
       flash.now[:danger] = "投稿に失敗しました"
       render :new
     end
-   end
+  end
+  
+  def show
+    @comment = Comment.new
+    @comments = @topic.comments.order(created_at: :desc)
+  end
 
   private
   def topic_params
