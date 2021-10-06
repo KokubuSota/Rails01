@@ -20,7 +20,5 @@ Rails.application.routes.draw do
   
   resources :comments
   
-  post '/comments', to: 'comments#create'
-  delete '/comments', to: 'comments#destroy'
 
 end
