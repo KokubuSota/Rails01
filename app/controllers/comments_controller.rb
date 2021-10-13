@@ -6,12 +6,13 @@ class CommentsController < ApplicationController
   end
  
   def create
-    @topic = Topic.find(params[:topic_id])
-    comment = Comment.new(comment_params)
-    if comment.save
-      redirect_to topic_path(@topic)
+    @comment = current_user.comments.new(comment_params)
+    
+    if @comment.save
+      redirect_to topics_path
     else
       flash.now[:alert] = 'コメントを入力してください。'
+      render :new
     end
   end
 
@@ -24,9 +25,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:text).merge(user_id: current_user.id, topic_id: params[:topic_id])
+    params.require(:comment).permit(:text,:topic_id)
   end
-  
-  
   
 end
